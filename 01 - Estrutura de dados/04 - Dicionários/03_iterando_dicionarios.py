@@ -12,3 +12,6 @@ print("=" * 100)
 
 for chave, valor in contatos.items():
     print(chave, valor)
+
+
+"""O método items() em dicionários Python retorna uma visão dos pares chave-valor do dicionário como objetos do tipo dict_items. Ele é muito útil para iterar sobre ambos, as chaves e os valores, ao mesmo tempo."""

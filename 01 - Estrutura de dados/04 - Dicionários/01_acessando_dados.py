@@ -4,6 +4,7 @@ print(dados["nome"])  # "Guilherme"
 print(dados["idade"])  # 28
 print(dados["telefone"])  # "3333-1234"
 
+#Subscrevendo os valores do dicionário
 dados["nome"] = "Maria"
 dados["idade"] = 18
 dados["telefone"] = "9988-1781"

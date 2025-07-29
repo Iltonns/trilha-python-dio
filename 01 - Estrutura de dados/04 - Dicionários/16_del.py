@@ -4,7 +4,7 @@ contatos = {
     "chappie@gmail.com": {"nome": "Chappie", "telefone": "3344-9871"},
     "melaine@gmail.com": {"nome": "Melaine", "telefone": "3333-7766"},
 }
-
+#Removendo um valor de uma dicionário
 del contatos["guilherme@gmail.com"]["telefone"]
 del contatos["chappie@gmail.com"]
 

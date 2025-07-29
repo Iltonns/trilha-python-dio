@@ -1,5 +1,6 @@
 contatos = {"guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"}}
 
+#Atualizando o dicionário
 contatos.update({"guilherme@gmail.com": {"nome": "Gui"}})
 print(contatos)  # {'guilherme@gmail.com': {'nome': 'Gui'}}
 
