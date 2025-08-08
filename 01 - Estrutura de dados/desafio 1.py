@@ -5,6 +5,7 @@
 # - Cadastro de usuários (identificados por CPF)
 # - Criação de contas bancárias para cada usuário
 # - Depósitos, saques e extratos por conta
+# - Listar contas
 # - Transferências entre contas
 # - Controle de limite de saques diários
 #
@@ -21,6 +22,7 @@ menu = """
 [t] Transferir
 [nu] Novo Usuário
 [nc] Nova Conta
+[lc] Listar Contas
 [q] Sair
 
 => """
@@ -143,6 +145,22 @@ def transferir():
     destino["extrato"] += f"Transferência recebida: R$ {valor:.2f} da conta {origem_num}\n"
     print("Transferência realizada com sucesso!")
 
+# Função para listar todas as contas cadastradas
+def listar_contas():
+    if not contas:
+        print("Nenhuma conta cadastrada no sistema.")
+        return
+    
+    print("\n================ LISTA DE CONTAS ================")
+    for conta in contas:
+        print(f"Agência: {conta['agencia']}")
+        print(f"Conta: {conta['numero_conta']}")
+        print(f"Titular: {conta['usuario']['nome']}")
+        print(f"CPF: {conta['usuario']['cpf']}")
+        print(f"Saldo: R$ {conta['saldo']:.2f}")
+        print("-" * 45)
+    print("================================================")
+
 # Loop principal do sistema bancário
 while True:
     opcao = input(menu)
@@ -172,6 +190,10 @@ while True:
     # Transferência entre contas
     elif opcao == "t":
         transferir()
+
+    # Listar contas
+    elif opcao == "lc":
+        listar_contas()
 
     # Sair do sistema
     elif opcao == "q":

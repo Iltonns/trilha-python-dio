@@ -7,4 +7,13 @@ def salario_bonus(bonus):
     return salario
 
 
-salario_bonus(500)  # 2500
+salario_com_bonus = salario_bonus(500)  # 2500
+print(salario_com_bonus)
+
+def funcao(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+
+n = funcao("python", 2022, curso="dio")
+print(n)
