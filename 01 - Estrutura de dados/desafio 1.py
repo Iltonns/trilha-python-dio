@@ -45,7 +45,7 @@ def encontrar_usuario(cpf):
 def criar_usuario():
     cpf = input("Informe o CPF (somente números): ")
     if encontrar_usuario(cpf):
-        print("Usuário já cadastrado!")
+        print("Já existe um usuário com este CPF!")
         return
     nome = input("Informe o nome completo: ")
     data_nascimento = input("Informe a data de nascimento (dd-mm-aaaa): ")
