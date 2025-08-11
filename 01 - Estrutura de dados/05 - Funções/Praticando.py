@@ -1,3 +1,13 @@
+# Função para determinar a prioridade do paciente
+def get_priority(paciente):
+    _, idade, status = paciente
+    if status.lower() == "urgente":
+        return 0  # Prioridade máxima
+    elif idade > 60:
+        return 1  # Prioridade alta
+    else:
+        return 2  # Prioridade normal
+
 # Entrada do número de pacientes
 n = int(input().strip())
 
@@ -5,25 +15,18 @@ n = int(input().strip())
 pacientes = []
 
 # Loop para entrada de dados
-for _ in range(n):
-    nome, idade, status = input().strip().split(", ")
-    idade = int(idade)
-    pacientes.append((nome, idade, status))
+for i in range(n):
+    entrada = input().strip().split(", ")
+    nome = entrada[0]
+    idade = int(entrada[1])
+    status = entrada[2]
+    pacientes.append((nome, idade, status, i))  # Adiciona índice para manter ordem de chegada
 
-# Função para definir prioridade
-def prioridade(paciente):
-    nome, idade, status = paciente
-    # Quanto maior o valor, maior a prioridade
-    if status.lower() == "urgente":
-        return (2, 0)  # Máxima prioridade
-    elif idade > 60:
-        return (1, 0)  # Prioridade média
-    else:
-        return (0, 0)  # Prioridade baixa
+# Ordenar os pacientes: primeiro por prioridade, depois por ordem de chegada
+pacientes_ordenados = sorted(pacientes, key=lambda x: (get_priority(x), x[3]))
 
-# Ordenar pacientes (reverse=True porque queremos maior prioridade primeiro)
-pacientes_ordenados = sorted(pacientes, key=prioridade, reverse=True)
+# Extrair apenas os nomes na ordem correta
+nomes_ordenados = [paciente[0] for paciente in pacientes_ordenados]
 
-# Exibir resultado
-ordem = [p[0] for p in pacientes_ordenados]
-print("Ordem de Atendimento:", ", ".join(ordem))
+# Formatar a saída
+print("Ordem de Atendimento:", ", ".join(nomes_ordenados))
